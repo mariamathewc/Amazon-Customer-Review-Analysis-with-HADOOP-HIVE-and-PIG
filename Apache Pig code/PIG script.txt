@@ -1,0 +1,25 @@
+lOAD_DATA = LOAD '/home/maria/Documents/{amazon_reviews_us_Digital_Software_v1_00.tsv,amazon_reviews_us_Personal_Care_Appliances_v1_00.tsv}' AS (marketplace:chararray, customer_id:chararray, review_id:chararray, product_id:chararray, product_parent:chararray, product_title:chararray, product_category:chararray, star_rating:int, helpful_votes:int, total_votes:int, vine:chararray, verified_purchase:chararray, review_headline:chararray, review_body:chararray, review_date:chararray);
+
+FILTER_HEADER = FILTER lOAD_DATA BY marketplace != 'marketplace';
+FILTER_COL = FOREACH FILTER_HEADER GENERATE $3, $6, $7; 
+
+GRP_PRDID = group FILTER_COL by product_id;  
+
+RATING_SUM = FOREACH GRP_PRDID GENERATE (FILTER_COL.product_id),(FILTER_COL.product_category), SUM(FILTER_COL.star_rating); 
+
+FLATTEN_DATA = FOREACH RATING_SUM GENERATE flatten($0) as id, flatten($1) as category, flatten($2) as rating; 
+DIST_DATA = distinct FLATTEN_DATA; 
+
+GRP_PRDCAT = group DIST_DATA by category;
+OUTPUT_DATA = FOREACH GRP_PRDCAT {
+        top = TOP(5, 2, DIST_DATA);
+        GENERATE top;
+        }
+
+FLATTEN_OUTPUT = FOREACH OUTPUT_DATA GENERATE flatten($0); 
+SORTED_OUTPUT = ORDER FLATTEN_OUTPUT by $1 DESC,$2 DESC;
+
+RANKING = rank SORTED_OUTPUT BY $1, $2 DESC;
+
+DUMP SORTED_OUTPUT;
+

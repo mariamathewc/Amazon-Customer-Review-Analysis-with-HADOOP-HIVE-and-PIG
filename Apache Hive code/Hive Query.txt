@@ -1,0 +1,4 @@
+ select * from (select product_id, product_category,sum(star_rating) as tot_rating,
+ ROW_NUMBER() OVER (PARTITION BY product_category ORDER BY sum(star_rating)DESC) as RNK  
+ from AmazonCustomerDataset group by product_id, product_category) t 
+ where rnk<6;

@@ -1,0 +1,12 @@
+/home/maria/eclipse-workspace/Amazon8/src/main/java/com/maria/Amazon8/ProductMapper.java
+/home/maria/eclipse-workspace/Amazon8/src/main/java/com/maria/Amazon8/CompositeKeyWritable.java
+/home/maria/eclipse-workspace/Amazon8/src/main/java/com/maria/Amazon8/NaturalKeyPartitioner.java
+/home/maria/eclipse-workspace/Amazon8/src/main/java/com/maria/Amazon8/TopProductMapper.java
+/home/maria/eclipse-workspace/Amazon8/src/main/java/com/maria/Amazon8/CompositeKeyWritableTop.java
+/home/maria/eclipse-workspace/Amazon8/src/main/java/com/maria/Amazon8/SecondarySortComparatorTop.java
+/home/maria/eclipse-workspace/Amazon8/src/main/java/com/maria/Amazon8/ProductReducer.java
+/home/maria/eclipse-workspace/Amazon8/src/main/java/com/maria/Amazon8/App.java
+/home/maria/eclipse-workspace/Amazon8/src/main/java/com/maria/Amazon8/NaturalKeyPartitionerTop.java
+/home/maria/eclipse-workspace/Amazon8/src/main/java/com/maria/Amazon8/NaturalKeyGroupComparator.java
+/home/maria/eclipse-workspace/Amazon8/src/main/java/com/maria/Amazon8/NaturalKeyGroupComparatorTop.java
+/home/maria/eclipse-workspace/Amazon8/src/main/java/com/maria/Amazon8/TopProductReducer.java
